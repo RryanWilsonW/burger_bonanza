@@ -46,7 +46,7 @@ const orm = {
         queryString += ') ';
 
         console.log(queryString)
-        connection.query(queryString, (err, result) => {
+        connection.query(queryString, vals, (err, result) => {
             if(err) {
                 throw err;
             };
@@ -54,7 +54,7 @@ const orm = {
         });
     },
 
-    updateOne(table, objColVals, condition, cb) {
+    update(table, objColVals, condition, cb) {
         let queryString = `UPDATE ${table}`;
 
         queryString += ' SET ';
@@ -67,12 +67,10 @@ const orm = {
             if(err) {
                 throw err;
             }
-            cd(result);
+            cb(result);
         });
 
     }
 };
-
-
 
 module.exports = orm;

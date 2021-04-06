@@ -8,8 +8,9 @@ const burger = {
     },
 
     insertOne: (cols, vals, cb) => {
-        orm.insertOne('burgers', cols, vals, () => {
+        orm.insertOne('burgers', cols, vals, (res) => {
             cb(res)
+            console.log(res)
         });
     },
 

@@ -11,16 +11,16 @@ router.get('/', (req, res) => {
         const hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
+        console.log('hbsObject', hbsObject);
         res.render('index', hbsObject);
     });
 });
 
 // Inserts new column into out burgers table.
-router.post('/api/burgers', (req, res) => {
+router.post('/burgers/insertOne', (req, res) => {
     burger.insertOne(['burger_name', 'devoured'], 
-    [req.body.burger_name, req.body.devoured], function(result) {
-        res.json({ id: result.insertId });
+    [req.body.burger_name, req.body.devoured], (result) => {
+        res.redirect('/');
     });
 });
 

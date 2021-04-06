@@ -1,9 +1,50 @@
-<div class="container">
-    <header>
-        <h1>Burger Bonanza</h1>
-        <h2>Add a burger that you would like to eat to your list.
+<div class=" bg container">
+    <header class="row">
+        <h1 class="col-md-12">Burger Bonanza</h1>
+    </header>
+
+    <section class="row">
+        <h2>
+            Add a burger that you would like to eat to your list.
             Once you hace consumed it, click devour, and it will 
             mover to the devoured list.
         </h2>
-    </header>
+
+        <div class="col-md-3"></div>
+
+        <form id="create-form" action="/burgers/insertOne" class="insertOne col-md-6" method="POST">
+            <input type="text" id="enter-burger" name="burger_name" class="form-control">
+            <button type="submit" class='btn-default' id="newBurger">Add a Burger</button>
+        </form>
+    </section>
+
+    <section class="row">
+        <div class="col-md-4" id="burger-list">
+            <h2>Menu</h2>
+            {{#each burgers}}
+            {{#unless this.devoured}}
+            <div class="burger-menu">
+                <form action="/burgers/updateOne" method="POST">
+                    {{this.burger_name}}
+                    <button type="submit" class="btn-default" id="burger-ready">DEVOUR IT!!</button>
+                </form>
+            </div>
+            {{/unless}}
+            {{/each}}
+        </div>
+    
+        <div class="col-md-3"></div>
+
+        <div class="col-md-4" id="burger-list">
+            <h2 class="burger-title text-center">Devoured Burgers</h2>
+            {{#each burgers}}
+            {{#if this.devoured}}
+            <div class="devoured">
+                {{this.burger_name}}
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+
+    </section>
 </div>
