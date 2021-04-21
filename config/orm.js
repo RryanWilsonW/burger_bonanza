@@ -53,16 +53,13 @@ const orm = {
             cb(result);
         });
     },
-
-    update(table, objColVals, condition, cb) {
+    updateOne(table, objColVals, condition, cb) {
         let queryString = `UPDATE ${table}`;
-
         queryString += ' SET ';
         queryString += objToSql(objColVals);
         queryString += ' WHERE ';
         queryString += condition;
 
-        console.log(queryString);
         connection.query(queryString, (err, result) => {
             if(err) {
                 throw err;

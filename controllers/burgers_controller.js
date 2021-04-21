@@ -19,36 +19,22 @@ router.get('/', (req, res) => {
 // Inserts new column into out burgers table.
 router.post('/burgers/insertOne', (req, res) => {
     burger.insertOne(['burger_name', 'devoured'], 
-    [req.body.burger_name, req.body.devoured], (result) => {
+    [req.body.burger_name, false], (result) => {
         res.redirect('/');
     });
 });
 
 // Updates one based off of its corresponding id.
-router.put('/api/burgers/:id', (req, res) => {
-    const condition = `id ${req.params.id}`;
-    console.log('condition', condition);
+router.put('/burgers/:id', (req, res) => {
+    let condition = `id = ${req.params.id}`;
 
-    burger.updateOne({ devoured: req.body.devoured }, condition, function(result) {
-        if(result.changedRows === 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        };
-    });
-});
-
-// Delete one based on its corresponding id.
-router.delete('/api/burgers/:id', (req, res) => {
-    const condition = `id ${req.params.id}`;
-    console.log('condition', condition);
-
-    burger.deleteOne(condition, (result) => {
-        if(result.changedRows === 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
+    burger.updateOne({ 
+        devoured: req.body.devoured }, condition, (result) => {
+            if(result.affectedRows === 0) {
+                return res.status(400).end();
+            } else {
+                res.status(200).end();
+            }
     });
 });
 

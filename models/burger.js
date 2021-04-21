@@ -13,12 +13,12 @@ const burger = {
             console.log(res)
         });
     },
-
-    updateOne: (objColVals, condition, cb) => {
+    
+     updateOne: (objColVals, condition, cb) => {
         orm.updateOne('burgers', objColVals, condition, (res) => {
             cb(res)
         });
-    }
+    },
 };
 
 module.exports = burger;

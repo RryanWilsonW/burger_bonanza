@@ -2,7 +2,7 @@
     <header class="row">
         <h1 class="col-md-12">Burger Bonanza</h1>
     </header>
-
+    {{! Submit }}
     <section class="row">
         <h2>
             Add a burger that you would like to eat to your list.
@@ -17,17 +17,15 @@
             <button type="submit" class='btn-default' id="newBurger">Add a Burger</button>
         </form>
     </section>
-
+    {{! Menu }}
     <section class="row">
         <div class="col-md-4" id="burger-list">
             <h2>Menu</h2>
             {{#each burgers}}
             {{#unless this.devoured}}
             <div class="burger-menu">
-                <form action="/burgers/updateOne" method="POST">
-                    {{this.burger_name}}
-                    <button type="submit" class="btn-default" id="burger-ready">DEVOUR IT!!</button>
-                </form>
+                <span>{{this.id}}{{this.burger_name}}</span>
+                <button type="button" class="eatBurger" id="{{this.id}}" data-id={{this.id}} data-newDevoured='{{devour}}'="">Devour!</button>
             </div>
             {{/unless}}
             {{/each}}
