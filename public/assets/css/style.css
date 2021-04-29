@@ -44,3 +44,22 @@ form {
     border: 5px solid green;
     border-radius: 45px;
 }
+
+.eatBurger {
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.eatBurger:hover {
+    background-color: rgb(69, 208, 69);
+}
+
+#newBurger {
+    padding: 10px;
+    border-radius: 15px;
+    border:black solid 3px;
+}
+
+#newBurger:hover {
+    background-color: rgb(69, 208, 69);
+}

@@ -1,8 +1,5 @@
-<div class=" bg container">
-    <header class="row">
-        <h1 class="col-md-12">Burger Bonanza</h1>
-    </header>
-    {{! Submit }}
+<h1>Burgers!</h1>
+
     <section class="row">
         <h2>
             Add a burger that you would like to eat to your list.
@@ -17,32 +14,23 @@
             <button type="submit" class='btn-default' id="newBurger">Add a Burger</button>
         </form>
     </section>
-    {{! Menu }}
-    <section class="row">
-        <div class="col-md-4" id="burger-list">
-            <h2>Menu</h2>
-            {{#each burgers}}
-            {{#unless this.devoured}}
-            <div class="burger-menu">
-                <span>{{this.id}}{{this.burger_name}}</span>
-                <button type="button" class="eatBurger" id="{{this.id}}" data-id={{this.id}} data-newDevoured='{{devour}}'="">Devour!</button>
-            </div>
-            {{/unless}}
-            {{/each}}
-        </div>
-    
-        <div class="col-md-3"></div>
 
-        <div class="col-md-4" id="burger-list">
-            <h2 class="burger-title text-center">Devoured Burgers</h2>
-            {{#each burgers}}
-            {{#if this.devoured}}
-            <div class="devoured">
-                {{this.burger_name}}
-            </div>
-            {{/if}}
-            {{/each}}
-        </div>
+<h2>Burgers on menu</h2>
 
-    </section>
-</div>
+<ul>
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{> burgers/burger-block devoured=true}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Devoured Burgers</h2>
+
+<ul>
+  {{#each burgers}}
+  {{#if devoured}}
+  {{> burgers/burger-block devoured=false}}
+  {{/if}}
+  {{/each}}
+</ul>

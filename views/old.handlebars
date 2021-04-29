@@ -1,0 +1,49 @@
+<div class=" bg container">
+    <header class="row">
+        <h1 class="col-md-12">Burger Bonanza</h1>
+    </header>
+    {{! Submit }}
+    <section class="row">
+        <h2>
+            Add a burger that you would like to eat to your list.
+            Once you hace consumed it, click devour, and it will 
+            mover to the devoured list.
+        </h2>
+
+        <div class="col-md-3"></div>
+
+        <form id="create-form" action="/burgers/insertOne" class="insertOne col-md-6" method="POST">
+            <input type="text" id="enter-burger" name="burger_name" class="form-control">
+            <button type="submit" class='btn-default' id="newBurger">Add a Burger</button>
+        </form>
+    </section>
+    {{! Menu }}
+    <section class="row">
+        <div class="col-md-4" id="burger-list">
+            <h2>Menu</h2>
+            {{#each burgers}}
+            {{#unless this.devoured}}
+            {{this.}}
+            <form class="devour">
+                <input type="hidden" class="burger_id" type="text" value="{{this.id}}"><br>
+                <button type="submit" class="eatBurger">Devour!</button>
+            </form>
+            {{/unless}}
+            {{/each}}
+        </div>
+    
+        <div class="col-md-3"></div>
+
+        <div class="col-md-4" id="burger-list">
+            <h2 class="burger-title text-center">Devoured Burgers</h2>
+            {{#each burgers}}
+            {{#if this.devoured}}
+            <div class="devoured">
+                {{this.burger_name}}
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+
+    </section>
+</div>
