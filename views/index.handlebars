@@ -14,23 +14,30 @@
             <button type="submit" class='btn-default' id="newBurger">Add a Burger</button>
         </form>
     </section>
+<div class="row">
+<div class="col-md-2"></div>
+<h2 class="col-md-4">Burger Menu</h2>
+<h2 class="col-md-4">Devoured Burger</h2>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+          <ul>
+            {{#each burgers}}
+            {{#unless devoured}}
+            {{> burgers/burger-block devoured=true}}
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
 
-<h2>Burgers on menu</h2>
-
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
-    {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Devoured Burgers</h2>
-
-<ul>
-  {{#each burgers}}
-  {{#if devoured}}
-  {{> burgers/burger-block devoured=false}}
-  {{/if}}
-  {{/each}}
-</ul>
+    <div class="col-md-4">
+        <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+        {{> burgers/burger-block devoured=false}}
+        {{/if}}
+        {{/each}}
+        </ul>
+    </div>
+</div>

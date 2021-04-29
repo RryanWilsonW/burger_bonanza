@@ -31,4 +31,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
              })
          })
      }
+    const deleteBttns = document.querySelectorAll('.delete-bttn');
+        deleteBttns.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const id = event.target.getAttribute('data-id');
+
+                fetch(`/burgers/${id}`, {
+                    method: 'DELETE',
+                }).then((res) => {
+                    console.log(res)
+                    console.log(`Deleted burger with id of ${id}`)
+                    location.reload();
+                })
+            })
+        })
 })
