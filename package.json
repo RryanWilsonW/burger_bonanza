@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/RryanWilsonW/burger_bonanza/issues"
   },
-  "homepage": "https://github.com/RryanWilsonW/burger_bonanza#readme"
+  "homepage": "https://github.com/RryanWilsonW/burger_bonanza#readme",
+  "engines": {
+    "npm": "6.14.10",
+    "node": "14.15.4"
+  }
 }
